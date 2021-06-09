@@ -15,6 +15,9 @@ h1,h2,h3,h4,h5,h6,ul{
     margin: 0;
     padding: 0;
 }
+input{
+    -webkit-appearance: none;
+}
 .main__title{
     margin-bottom: 20px;
 }
@@ -117,13 +120,26 @@ h1,h2,h3,h4,h5,h6,ul{
 }
 .complete__button{
     color: var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .delete__button{
     color: var(--red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 2px;
 }
 .task__buttons button:hover{
     border-color: var(--violet);
     cursor: pointer;
+}
+.complete__button:active svg path{
+    stroke: white;
+}
+.delete__button:active svg rect{
+    fill: white;
 }
 .task.completed .task__title{
     border-color: var(--green);

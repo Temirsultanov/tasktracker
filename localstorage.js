@@ -49,7 +49,11 @@ const addNewTask = function (inputValue) {
 }
 const getButtonIdByEvent = function (evt) {
     const $button = evt.target;
-    const buttonId = $button.parentElement.parentElement.parentElement.getAttribute("id");
+    let $parent = $button.parentElement;
+    while (!$parent.classList.contains("task")) {
+        $parent = $parent.parentElement;
+    }
+    const buttonId = $parent.getAttribute("id");
     return buttonId.substring(4, buttonId.length)
 }
 
