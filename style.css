@@ -90,6 +90,7 @@ input{
     border: 3px solid var(--green);
     font-size: 18px;
     font-family: 'Montserrat';
+    font-weight: 700;
     border-radius: 25px;
     padding-top: 25px;
     padding-bottom: 25px;
@@ -110,26 +111,17 @@ input{
     border: 3px solid var(--grey);
     border-radius: 25px;
     margin-left: 10px;
-    font-size: 20px;
     transition: 0.2s ease;
-}
-.change__button{
-    color: rgb(71, 105, 255);
-    transform: rotate(135deg);
-    padding-bottom: 7px;
-    padding-right: 3px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .complete__button{
     color: var(--green);
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 .delete__button{
     color: var(--red);
-    display: flex;
-    align-items: center;
-    justify-content: center;
     padding-top: 2px;
 }
 .task__buttons button:hover{
