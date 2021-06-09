@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="smile.png" type="image/png">
+    <title>Наведи порядок в жизни | TaskTracker</title>
+</head>
+<body>
+    <h1 class="main__title">&#128517; Список дел &#129322;</h1>
+    <form id="taskForm" method="POST">
+        <input id="inputTask" type="text" placeholder="Например: Покушать">
+        <button id="addButton" type="submit">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="8.5" width="3" height="20" rx="1.5" fill="blueviolet"/>
+                <rect y="8" width="20" height="3" rx="1.5" fill="blueviolet"/>
+            </svg>                
+        </button>
+    </form>
+    <ul class="tasks">
+        <template id="template-task">
+            <li class="task">
+                <input class="task__title"></input>
+                <ul class="task__buttons">
+                    <li><button class="complete__button">✔</button></li>
+                    <li><button class="delete__button">✖</button></li>
+                </ul>
+            </li>    
+        </template>
+    </ul>
+    <script src="localstorage.js"></script>
+</body>
+</html>
