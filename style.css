@@ -2,6 +2,8 @@ body{
     margin: 0;
     box-sizing: border-box;
     font-family: 'Montserrat';
+    font-weight: 700;
+    font-style: italic;
     padding: 20px;
     --violet: blueviolet;
     --green: rgb(22, 180, 141);
