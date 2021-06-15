@@ -47,7 +47,7 @@ const addNewTask = function (inputValue) {
     localStorage.setItem("tasks", JSON.stringify(tasks))
     tasksToTemplate();
 }
-const getButtonIdByEvent = function (evt) {
+const getTaskIdByEvent = function (evt) {
     const $button = evt.target;
     let $parent = $button.parentElement;
     while (!$parent.classList.contains("task")) {
@@ -84,11 +84,11 @@ const changeTaskById = function (id, taskTitle) {
 
 // Функции-обработчики
 const onCompleteButtonClick = function (evt) {
-    const id = getButtonIdByEvent(evt);
+    const id = getTaskIdByEvent(evt);
     toggleCompleteById(id);
 }
 const onDeleteButtonClick = function (evt) {
-    const id = getButtonIdByEvent(evt);
+    const id = getTaskIdByEvent(evt);
     deleteTaskById(id);
 }
 const onTaskChangingChange = function (evt) {
@@ -102,13 +102,27 @@ const onTaskChangingChange = function (evt) {
         deleteTaskById(id);
     }
 }
-
+const onTaskMouseDown = function (evt) {
+    let mouseDownX = evt.pageX;
+    let id = getTaskIdByEvent(evt);
+    let $task = document.querySelector(`#task${id}`);
+    const onTaskMouseUp = function(evt) {
+        let mouseUpX = evt.pageX;
+        let transformXString = $task.style.transform; 
+        let transformX = parseInt(transformXString.substring(11, transformXString.indexOf("px"))) || 0;
+        console.log(transformX);
+        $task.style.transform = `translateX(${transformX + (mouseUpX - mouseDownX)}px)`
+    }
+    window.addEventListener('mouseup', onTaskMouseUp);
+    
+}
 const addListenerToButtons = function () {
     const $tasks = $taskList.querySelectorAll(".task");
     $tasks.forEach( $task => {
        $task.querySelector(".complete__button").addEventListener("click", onCompleteButtonClick);
        $task.querySelector(".delete__button").addEventListener("click", onDeleteButtonClick);
        $task.querySelector(".task__title").addEventListener("change", onTaskChangingChange);
+       $task.addEventListener("mousedown", onTaskMouseDown);
     })
 }
 const onAddButtonClick = function (evt) {

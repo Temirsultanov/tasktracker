@@ -1,0 +1,128 @@
+body{
+    margin: 0;
+    padding-top: 50px;
+    overflow-x: hidden; 
+}
+*, body{
+    box-sizing: border-box;
+    cursor: none;
+}
+.tasks{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-family: 'Helvetica';
+}
+.task{
+    position: relative;
+    height: 60px;
+    display: flex;
+    align-items: center;
+
+    margin-top: -1px;
+    border: 1px solid #ccc;
+    
+    user-select: none;
+}
+.task__title{
+    flex: 1;
+    margin: 0;
+    padding: 10px 20px;
+}
+
+/* Buttons */
+.task button{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    width: 210px;
+    height: 60px;
+
+    border: 0;
+    border: 1px solid #ccc;    
+
+    background-color: #fff;
+    transition: 0.3s ease;
+}
+.delete__button{
+    left: -210px;
+    justify-content: flex-end;
+    padding-right: 22px;   
+    border-left: 0px;
+}
+.delete__button:hover{
+    background-color: #f34848;
+}
+.delete__button:hover rect{
+    fill: white;
+}
+
+.complete__button{
+    right: -210px;
+    justify-content: flex-start;
+    padding-left: 22px;
+    border-right: 0px;
+}
+.complete__button:hover{
+    background-color: blueviolet;
+}
+.complete__button:hover path{
+    stroke: white;
+}
+
+/* Delete open */
+.task__deleteOpen {
+    transform: translateX(90px);
+}
+
+/* Complete open */
+.task__completeOpen {
+    transform: translateX(-90px);
+} 
+
+/* Deleting */
+.task__deleting {
+    transform: translateX(190px);
+} 
+.task__deleting .delete__button {
+    background-color: #f34848;
+}
+.task__deleting .delete__button rect {
+    fill: white;
+}
+
+/* Completing */
+.task__completing {
+    transform: translateX(-190px);
+}
+.task__completing .complete__button {
+    background-color: blueviolet;
+}
+.task__completing .complete__button path {
+    stroke: white;
+}
+
+.task__complete {
+    background-color: rgb(22, 180, 141);
+    color: white;
+}
+.task__delete {
+    height: 0;
+    border: 0;
+    opacity: 0;
+    transform: translateX(100%);
+}
+/* Cursor */
+.cursor{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    pointer-events: none;
+    user-select: none;
+}
