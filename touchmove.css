@@ -1,6 +1,7 @@
 body{
     margin: 0;
     padding-top: 50px;
+    min-height: 100vw;
     overflow-x: hidden; 
 }
 *, body{
@@ -12,6 +13,7 @@ body{
     padding: 0;
     margin: 0;
     font-family: 'Helvetica';
+    overflow: hidden;
 }
 .task{
     position: relative;
