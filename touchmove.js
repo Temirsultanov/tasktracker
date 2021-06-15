@@ -44,14 +44,15 @@ let taskMethods = {
 }
 const onTaskMouseDown = function (evt) {
     let firstX = evt.pageX;
-    let firstTransform = task.style.transform.substring(10, -4);
-    console.log(firstTransform);
+    let firstTransform = task.style.transform;
     const onTaskMouseMove = function (evt) {
         let diffX = evt.pageX - firstX;
         if (diffX > 210) {
+            taskMethods.deleting();
             task.style.transform = `translateX(210px)`;
         }
         else if (diffX < -210) {
+            taskMethods.completing();
             task.style.transform = `translateX(-210px)`;
         }
         else if (diffX > 150) {
@@ -63,14 +64,21 @@ const onTaskMouseDown = function (evt) {
             task.style.transform = `translateX(${diffX}px)`;
         }
         else{
-            taskMethods.normal();
-            task.style.transform = `translateX(${diffX}px)`;
+            if (task.classList.contains("task__completeOpen")) {
+                // task.style.transform = `translateX(${-90 + diffX}px)`;   
+            }
+            else if (task.classList.contains("task__deleteOpen")) {
+                // task.style.transform = `translateX(${90 + diffX}px)`;   
+            }
+            else{
+                taskMethods.normal();
+                task.style.transform = `translateX(${diffX}px)`;
+            }
+            
         }
         
     } 
     const onTaskMouseUp = function (evt) {
-        // onCompleteButtonClick();
-        // onDeleteButtonClick();
         task.style.transition = "all 0.3s ease";
         task.style.transform = "";
         let lastX = evt.pageX;
@@ -81,10 +89,12 @@ const onTaskMouseDown = function (evt) {
             taskMethods.complete();
         }
         else if (task.classList.contains("task__completeOpen")) {
-            taskMethods.complete();
+            // taskMethods.complete();
+            taskMethods.normal();
         }
         else if (task.classList.contains("task__deleteOpen")) {
-            taskMethods.delete();
+            // taskMethods.delete();
+            taskMethods.normal();
         }
         else if (lastX - firstX > 30) {
             taskMethods.deleteOpen();
@@ -100,20 +110,23 @@ const onTaskMouseDown = function (evt) {
         }, 300);
         window.removeEventListener("mousemove", onTaskMouseMove)
         window.removeEventListener("mouseup", onTaskMouseUp);
+        window.removeEventListener("touchmove", onTaskMouseMove)
+        window.removeEventListener("touchstart", onTaskMouseUp);
     }
     window.addEventListener("mousemove", onTaskMouseMove)
     window.addEventListener("mouseup", onTaskMouseUp);
+    window.addEventListener("touchmove", onTaskMouseMove)
+    window.addEventListener("touchend", onTaskMouseUp);
 }
 task.addEventListener("mousedown", onTaskMouseDown);
+task.addEventListener("touchstart", onTaskMouseDown);
 
 
 
 // Complete Button
 const completeButton = document.querySelector(".complete__button");
 const onCompleteButtonClick = function () {
-    if (task.classList.contains("task__completeOpen")) {
-        taskMethods.complete();
-    }
+    taskMethods.complete();
 }
 completeButton.addEventListener("click", onCompleteButtonClick);
 
@@ -121,9 +134,7 @@ completeButton.addEventListener("click", onCompleteButtonClick);
 // Delete Button
 const deleteButton = document.querySelector(".delete__button");
 const onDeleteButtonClick = function () {
-    if (task.classList.contains("task__deleteOpen")) {
-        taskMethods.delete();
-    }
+    taskMethods.delete();
 }
 deleteButton.addEventListener("click", onDeleteButtonClick);
 
