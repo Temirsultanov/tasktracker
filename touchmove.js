@@ -137,11 +137,3 @@ const onDeleteButtonClick = function () {
     taskMethods.delete();
 }
 deleteButton.addEventListener("click", onDeleteButtonClick);
-
-
-// Cursor
-let cursor = document.querySelector(".cursor");
-window.addEventListener('mousemove', function (evt) {
-    cursor.style.left = `${evt.pageX}px`;
-    cursor.style.top = `${evt.pageY}px`;
-})
