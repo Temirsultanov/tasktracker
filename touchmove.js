@@ -65,18 +65,14 @@ const onTaskMouseDown = function (evt) {
         }
         else{
             if (task.classList.contains("task__completeOpen")) {
-                // task.style.transform = `translateX(${-90 + diffX}px)`;   
             }
             else if (task.classList.contains("task__deleteOpen")) {
-                // task.style.transform = `translateX(${90 + diffX}px)`;   
             }
             else{
                 taskMethods.normal();
                 task.style.transform = `translateX(${diffX}px)`;
-            }
-            
-        }
-        
+            }   
+        } 
     } 
     const onTaskMouseUp = function (evt) {
         task.style.transition = "all 0.3s ease";
