@@ -10,7 +10,7 @@ let tasks = tasksFromLocalStorage || [
     {
         id: 1,
         title: "Click on the cross to remove",
-        completed: true,
+        completed: false,
     },
     {
         id: 2,
@@ -19,8 +19,8 @@ let tasks = tasksFromLocalStorage || [
     },
     {
         id: 3,
-        title: "Welcome to app!",
-        completed: false,
+        title: "Welcome to app!🤪",
+        completed: true,
     }
 ]
 const tasksToTemplate = function () {
