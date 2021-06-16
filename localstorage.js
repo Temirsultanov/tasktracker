@@ -9,17 +9,17 @@ let tasksFromLocalStorage = JSON.parse(localStorage.getItem("tasks"));
 let tasks = tasksFromLocalStorage || [
     {
         id: 1,
-        title: "Убраться в комнате",
+        title: "Click on the cross to remove",
         completed: true,
     },
     {
         id: 2,
-        title: "Поступить в Италию",
+        title: "Click on the checkmark to complete",
         completed: false,
     },
     {
         id: 3,
-        title: "Пойти в магазин",
+        title: "Welcome to app!",
         completed: false,
     }
 ]
