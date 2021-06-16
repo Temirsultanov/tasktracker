@@ -28,7 +28,7 @@ const tasksToTemplate = function () {
     tasks.forEach( task => {
         let $currentTaskHTML = $taskTemplate.cloneNode(true);
         let $currentTaskTitle = $currentTaskHTML.querySelector(".task__title");
-        $currentTaskTitle.value = task.title;
+        $currentTaskTitle.textContent = task.title;
         if (task.completed) {
             $currentTaskHTML.classList.add("completed");
         }
@@ -95,8 +95,8 @@ const onTaskChangingChange = function (evt) {
     const $taskTitle = evt.target;
     const taskId = $taskTitle.parentElement.getAttribute("id");
     const id = taskId.substring(4, taskId.length)
-    if ($taskTitle.value !== "") {
-        changeTaskById(id, $taskTitle.value)
+    if ($taskTitle.textContent !== "") {
+        changeTaskById(id, $taskTitle.textContent)
     }
     else{
         deleteTaskById(id);
